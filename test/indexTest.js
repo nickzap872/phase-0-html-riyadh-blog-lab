@@ -1,4 +1,4 @@
-require ( './helpers.js' );
+require('./helpers.js');
 
 const chai = require("chai");
 chai.use(require("chai-dom"));
@@ -32,24 +32,25 @@ describe("index.html", () => {
       );
     });
   });
+
   describe("the content section", () => {
     it("has three <h3> elements with the correct content", () => {
       // find the element with an id of content
-      const wrapper = document.querySelector("#content");
+      const content = document.querySelector("#content");
       const hint1 = "Wrong number of <h3> tag(s) found";
       expect(content, hint1).to.have.descendants("h3").and.have.length(3);
 
-      const [firstH3, secondH3, thirdH3] = wrapper.querySelectorAll("h3");
+      const [firstH3, secondH3, thirdH3] = content.querySelectorAll("h3");
       expect(firstH3).to.contain.text("Travel");
       expect(secondH3).to.contain.text("History");
       expect(thirdH3).to.contain.text("Sources");
     });
 
     it("has three <p> elements with the correct content", () => {
-      const wrapper = document.querySelector("#content");
+      const content = document.querySelector("#content");
       expect(content).to.have.descendants("p");
 
-      const [firstP, secondP, thirdP] = wrapper.querySelectorAll("p");
+      const [firstP, secondP, thirdP] = content.querySelectorAll("p");
       expect(firstP).to.contain.text("Once a mudbrick waystation");
       expect(secondP).to.contain.text("Riyadh");
       expect(thirdP).to.contain.text(
@@ -57,13 +58,12 @@ describe("index.html", () => {
       );
     });
 
-
     it("has three <img> elements with the correct attributes", () => {
-      const wrapper = document.querySelector("#content");
+      const content = document.querySelector("#content");
       const hint1 = "Wrong number of <img> tag(s) found";
       expect(content, hint1).to.have.descendants("img").and.have.length(3);
 
-      const [firstImg, secondImg, thirdImg] = wrapper.querySelectorAll("img");
+      const [firstImg, secondImg, thirdImg] = content.querySelectorAll("img");
       expect(firstImg).to.have.attribute(
         "src",
         "./images/transportation/transit.jpg"
@@ -79,11 +79,11 @@ describe("index.html", () => {
     });
 
     it("has two <a> elements with the correct attributes", () => {
-      const wrapper = document.querySelector("#content");
+      const content = document.querySelector("#content");
       const hint1 = "Wrong number of <a> tag(s) found";
       expect(content, hint1).to.have.descendants("a").and.have.length(2);
 
-      const [firstA, secondA] = wrapper.querySelectorAll("a");
+      const [firstA, secondA] = content.querySelectorAll("a");
       expect(firstA).to.have.attribute(
         "href",
         "http://www.lonelyplanet.com/saudi-arabia/riyadh"
